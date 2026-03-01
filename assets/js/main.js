@@ -137,6 +137,17 @@ function initProjectModals() {
     // Build modal body using DOM for safety
     body.innerHTML = '';
 
+    if (data.screenshot) {
+      const ssContainer = document.createElement('div');
+      ssContainer.className = 'modal-screenshot';
+      const ssImg = document.createElement('img');
+      ssImg.src = data.screenshot;
+      ssImg.alt = data.name + ' GUI Screenshot';
+      ssImg.loading = 'lazy';
+      ssContainer.appendChild(ssImg);
+      body.appendChild(ssContainer);
+    }
+
     const desc = document.createElement('p');
     desc.className = 'modal-desc';
     desc.textContent = data.description;
@@ -200,6 +211,7 @@ const projectData = {
   flexview: {
     name: 'FlexView: TF-Xplorer',
     version: 'v3.31 | 32,000+ Lines of Code',
+    screenshot: 'assets/images/screenshots/flexview.png',
     description: 'A comprehensive 3D visualization tool for mesh-based structural data. FlexView generates interactive HTML reports using Plotly, enabling engineers to visualize stress distributions, reserve factors, and structural properties directly on aircraft mesh models. It became the standard data transfer method between 130+ analysis and 60+ design engineers on the TF-X program.',
     features: [
       'Dual visualization modes: Mesh Representation (property/element coloring) and Dot & Line Representation (discrete point/vector data)',
@@ -238,6 +250,7 @@ const projectData = {
   sade: {
     name: 'SADE: Strength Analysis Engine',
     version: 'v2.62 | Vectorized Analysis',
+    screenshot: 'assets/images/screenshots/sade.png',
     description: 'A high-performance automated strength analysis tool for Nastran FEA models. SADE extracts von Mises stress results, intelligently classifies structural elements by connection type (CBUSH, T-junction, L-bend), applies appropriate safety factors, and calculates reserve factors with thickness optimization capabilities.',
     features: [
       'Priority-based element classification: CBUSH-connected (3.0x), T-connections (1.5x), L-connections (1.5x), and standard (1.0x)',
@@ -256,6 +269,7 @@ const projectData = {
   bade: {
     name: 'BADE: Buckling Analysis Engine',
     version: 'v3.22 | Multi-threaded Processing',
+    screenshot: 'assets/images/screenshots/bade.png',
     description: 'A comprehensive tool for extracting and analyzing buckling mode data from Nastran OP2 or PCH files with advanced structural connectivity analysis. BADE identifies maximum displacement nodes, maps them to structural properties, detects coplanar surfaces and T-connections, and calculates optimized thicknesses.',
     features: [
       'Dual file format support: binary OP2 and text PCH (punch) files with automatic detection',
@@ -274,6 +288,7 @@ const projectData = {
   huth: {
     name: 'Huth Stiffness Updater',
     version: 'v2.53 | O(n) Optimized',
+    screenshot: 'assets/images/screenshots/huth.png',
     description: 'Calculates and updates CBUSH element stiffness values in Nastran BDF files using the empirical Huth formula for fastened joints. Features advanced composite material support with Classical Lamination Theory, multi-plate connection analysis, and Airbus-method dual-CBUSH generation.',
     features: [
       'Huth formula implementation for shear and axial fastener stiffness calculation',
@@ -293,6 +308,7 @@ const projectData = {
   propmapper: {
     name: 'Property Mapper',
     version: 'v1.61 | Ray Casting Engine',
+    screenshot: 'assets/images/screenshots/property_mapper.png',
     description: 'An intelligent property transfer tool for finite element analysis that matches properties between different mesh configurations using advanced geometric analysis. Features a multi-stage pipeline with proximity scoring, surface normal alignment, and ray casting for tie-breaking.',
     features: [
       '4-stage mapping pipeline: candidate selection, perfect match, fast scoring, and ray casting',
@@ -311,6 +327,7 @@ const projectData = {
   rbemapper: {
     name: 'RBE Mapper',
     version: 'v1.37 | Spatial Algorithms',
+    screenshot: 'assets/images/screenshots/rbe_mapper.png',
     description: 'Automatically generates Rigid Body Elements (RBE2 and RBE3) from large-scale FEA models by intelligently mapping master nodes to slave nodes. Features exclusive assignment with priority-based conflict resolution and colinearity detection.',
     features: [
       'Dual element support: RBE2 (independent master) and RBE3 (dependent master) generation',
@@ -329,6 +346,7 @@ const projectData = {
   safir: {
     name: 'SAFiR: File Filter',
     version: 'v2.97 | 100GB+ Streaming',
+    screenshot: 'assets/images/screenshots/safir.png',
     description: 'A high-performance filtering tool for large BDF and CSV files with streaming processing for datasets exceeding 100GB. Features entry-aware BDF processing that preserves multi-line structural integrity, 8 search types, complex Boolean expressions, and batch operations.',
     features: [
       'Streaming architecture: constant memory usage regardless of file size (100GB+ capable)',
@@ -348,6 +366,7 @@ const projectData = {
   thermalmapper: {
     name: 'Thermal Mapper',
     version: 'v1.22 | Spatial Interpolation',
+    screenshot: 'assets/images/screenshots/thermal_mapper.png',
     description: 'Maps thermal loads from coarse/source meshes to fine/target meshes using k-nearest neighbor interpolation with inverse distance weighting. Enables coupled thermal-structural FEA workflows by transferring temperature distributions between non-conforming meshes.',
     features: [
       'K-Nearest Neighbors with Inverse Distance Weighting (IDW) interpolation',
@@ -366,6 +385,7 @@ const projectData = {
   spcdmapper: {
     name: 'SPCD Mapper',
     version: 'v1.25 | Load Interpolation',
+    screenshot: 'assets/images/screenshots/spcd_mapper.png',
     description: 'Interpolates and maps structural prescribed displacement (SPCD) loads from source to target meshes. Essential for transferring boundary condition constraints between different mesh refinements while preserving load case organization and DOF definitions.',
     features: [
       'KNN-based spatial interpolation with configurable neighbor count and distance power',
